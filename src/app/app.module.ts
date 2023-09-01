@@ -4,10 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FilmComponent } from './film/film.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FilmComponent
   ],
   imports: [
     BrowserModule,
