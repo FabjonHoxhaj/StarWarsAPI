@@ -3,6 +3,7 @@
 
 <ul>
     <li *ngFor="let character of characters">
-      {{ character.name }} - {{ character.height }} cm, {{ character.mass }} kg
+    <b>Name:</b>{{ character.name }}, <b>Körpergröße:</b> {{ character.height }} cm, <b>Körpergewicht:</b> {{ character.mass }} kg, 
+    <b>Haarfarbe:</b> {{character.hair_color}}
     </li>
   </ul>
