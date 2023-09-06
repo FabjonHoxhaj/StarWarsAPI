@@ -16,7 +16,7 @@ export class FilmComponent implements OnInit {
   constructor(private starWarsService: SwapiService) { }
 
   ngOnInit(): void {
-    this.starWarsService.getPeople().subscribe((data: any) => {
+    this.starWarsService.getData().subscribe((data: any) => {
       this.characters = data.results;
     });
   }
