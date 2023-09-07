@@ -13,7 +13,11 @@ export class SwapiService {
 
   constructor(private http: HttpClient) { }
 
-  getData(): Observable<any> {
+  getDataPeople(): Observable<any> {
     return this.http.get(this.API_URL + 'people/');
+  }
+
+  getDataFilm(): Observable<any> {
+    return this.http.get(this.API_URL + 'films/');
   }
 }

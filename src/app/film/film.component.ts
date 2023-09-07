@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SwapiService } from '../swapi.service';
-import { Character } from '../interface';
-
-
+import { Film } from '../interfaceFilms';
 
 @Component({
   selector: 'app-film',
@@ -11,13 +9,13 @@ import { Character } from '../interface';
 })
 
 export class FilmComponent implements OnInit {
-  characters: Character[] = [];
+  films: Film[] = [];
 
   constructor(private starWarsService: SwapiService) { }
 
   ngOnInit(): void {
-    this.starWarsService.getData().subscribe((data: any) => {
-      this.characters = data.results;
+    this.starWarsService.getDataFilm().subscribe((data: any) => {
+      this.films = data.results;
     });
   }
 }
