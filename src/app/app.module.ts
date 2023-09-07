@@ -14,7 +14,7 @@ import { FilmComponent } from './film/film.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-     HttpClientModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
