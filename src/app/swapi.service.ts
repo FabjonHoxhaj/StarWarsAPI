@@ -20,4 +20,8 @@ export class SwapiService {
   getDataFilm(): Observable<any> {
     return this.http.get(this.API_URL + 'films/');
   }
+
+  getDataPlanets(): Observable<any> {
+    return this. http.get(this.API_URL + 'planets/');
+  }
 }
