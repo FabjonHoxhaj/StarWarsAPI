@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SwapiService } from './swapi.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'StarWarsAPI';
 
-  inputValue: string = '';
+  constructor(private swapi: SwapiService) {}
 
-  InputChange(event: any) {
-    this.inputValue = event.target.value;
+  inputValue: any  = [];
+
+  ngOnInit(): void {
+    this.swapi.getData().subscribe((data: any)=> {
+    this.inputValue = data.results[0];
+    });
   }
+
 }

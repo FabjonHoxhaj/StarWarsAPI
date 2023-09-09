@@ -24,4 +24,8 @@ export class SwapiService {
   getDataPlanets(): Observable<any> {
     return this. http.get(this.API_URL + 'planets/');
   }
+
+  getData(): Observable<any> {
+    return this.http.get(this.API_URL + 'planets/');
+  }
 }
