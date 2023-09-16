@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SwapiService } from './swapi.service';
+import { Search } from './interfaceSearch';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +12,20 @@ export class AppComponent {
 
   constructor(private swapi: SwapiService) {}
 
-  inputValue: any  = [];
+  value: any  = [];
+  inputValue: any;
 
   ngOnInit(): void {
-    this.swapi.getData().subscribe((data: any)=> {
-    this.inputValue = data.results[0];
+    this.swapi.getSingleData().subscribe((data: any)=> {
+    this.value = data.results[1];
     });
+  }
+
+  inputUser(event: any) {
+    this.swapi.searchMethod(event).subscribe((data: any)=> {
+    this.inputValue = data.results[1];
+    });
+    console.log(this.inputValue);
   }
 
 }

@@ -1,7 +1,8 @@
 
-<button placeholder="Gebe etwas ein">Klicken</button>
+<input (change) = "inputUser($event)" placeholder="Gebe etwas ein!">
 
-  <p>{{inputValue.name}}</p>
+  <p>{{value?.name}}</p>
+  <p>{{inputValue?.name}}</p>
 
 
 <app-film></app-film>
