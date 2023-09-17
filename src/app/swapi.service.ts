@@ -18,6 +18,8 @@ export class SwapiService {
   private vehicles = 'https://swapi.dev/api/vehicles/';
   private starships = 'https://swapi.dev/api/starships/';
 
+  private result = "";
+
   constructor(private http: HttpClient) { }
 
   getDataPeople(): Observable<any> {
@@ -36,8 +38,18 @@ export class SwapiService {
     return this.http.get(this.API_URL + 'planets/');
   }
 
-  searchMethod(name: any): Observable<any> {
-    let test: any = this.http.get(this.API_URL + 'planets/' + '?search=' + name);
-    return test;
+  searchMethod(name: any): string {
+      this.http.get(this.people).subscribe((data: any)=>
+      {
+        for(let i = 0; i<data.results.length; i++) {
+          if(data.results[i] == name) {
+            this.result = data.results[i];
+         }
+         break;
+        }
+           
+      });
+      return this.result;
+    
   }
 }

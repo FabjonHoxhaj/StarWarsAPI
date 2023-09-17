@@ -22,9 +22,7 @@ export class AppComponent {
   }
 
   inputUser(event: any) {
-    this.swapi.searchMethod(event).subscribe((data: any)=> {
-    this.inputValue = data.results[1];
-    });
+    this.swapi.searchMethod(event);
     console.log(this.inputValue);
   }
 
