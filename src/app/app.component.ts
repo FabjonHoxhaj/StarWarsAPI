@@ -13,7 +13,8 @@ export class AppComponent {
   constructor(private swapi: SwapiService) {}
 
   value: any  = [];
-  inputValue: any;
+  public inputValue: string = " ";
+  located: any;
 
   ngOnInit(): void {
     this.swapi.getSingleData().subscribe((data: any)=> {
@@ -22,8 +23,11 @@ export class AppComponent {
   }
 
   inputUser(event: any) {
-    this.swapi.searchMethod(event);
-    console.log(this.inputValue);
+    this.inputValue = event.target.value;
+    this.located = this.swapi.searchMethod(this.inputValue);
+    console.log(this.located + " = Ergebnis");
   }
+
+
 
 }
