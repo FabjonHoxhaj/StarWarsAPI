@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -19,6 +20,7 @@ export class SwapiService {
   private starships = 'https://swapi.dev/api/starships/';
 
   result: string = " ";
+  variable: any;
 
   constructor(private http: HttpClient) { }
 
@@ -38,20 +40,15 @@ export class SwapiService {
     return this.http.get(this.API_URL + 'planets/');
   }
 
-  searchMethod(name: any): any {
-      this.result = name;
-      /*this.http.get(this.people).subscribe((data: any)=>
-      {
-        for(let i = 0; i<data.results.length; i++) {
-          if(data.results[i] == name) {
-            this.result = data.results[i];
-         }
-         break;
+  searchMethod(name: string): Observable<string> {
+    return this.http.get(this.people).pipe(map((data: any) => {
+        for (let i = 0; i < data.results.length; i++) {
+          if (data.results[i].name == name) {
+            return data.results[i].name; // Gefundener Name wird zurückgegeben
+          }
         }
-     
-      });*/
-      return this.result;
-      
-    
+        throw new Error("Ihr Begriff wurde nicht gefunden"); // Fehler, wenn der Name nicht gefunden wird
+      })
+    );
   }
 }

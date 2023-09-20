@@ -22,12 +22,15 @@ export class AppComponent {
     });
   }
 
-  inputUser(event: any) {
+  /*inputUser(event: any) {
     this.inputValue = event.target.value;
     this.located = this.swapi.searchMethod(this.inputValue);
-    console.log(this.located + " = Ergebnis");
+    console.log(this.located);
+  }*/
+
+  inputUser(event: any) {
+    this.inputValue = event.target.value;
+    this.swapi.searchMethod(this.inputValue).subscribe((located: string) => {
+        this.located = located;});
   }
-
-
-
 }
